@@ -6,5 +6,5 @@ export default defineConfig({
     server: {
         port: 5173,
     },
-    base: '/wedding-landing-page/', 
+    base: '/douglas-e-mari/', 
 });
