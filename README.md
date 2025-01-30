@@ -17,5 +17,18 @@ Siga os passos abaixo para configurar e executar o projeto localmente.
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/douglas-dorigo/landing-page-casamento.git
-   cd landing-page-casamento
+   git clone https://github.com/douglas-dorigo/wedding-landing-page.git
+   cd wedding-landing-page
+
+2. **Instale as dependências:**
+   ```bash
+   npm install
+
+3. **Execute o projeto:**
+   ```bash
+   npm run dev
+
+4. **Acesse o projeto:**
+   ```bash
+   Abra o navegador e acesse http://localhost:5173.
+
