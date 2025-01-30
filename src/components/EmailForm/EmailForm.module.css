@@ -1,0 +1,82 @@
+.rsvpContainer {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .rsvpContainer h2 {
+    font-size: 24px;
+    color: #8d6e63;
+    margin-bottom: 15px;
+  }
+  
+  .successMessage {
+    font-size: 18px;
+    color: #28a745;
+    margin-top: 10px;
+  }
+  
+  .rsvpForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .rsvpForm label {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .rsvpForm input,
+  .rsvpForm textarea,
+  .rsvpForm button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .rsvpForm input:focus,
+  .rsvpForm textarea:focus {
+    outline: none;
+    border-color: #d2b48c;
+  }
+  
+  .radioGroup {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .radioGroup label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+  }
+  
+  .rsvpForm textarea {
+    resize: none;
+    height: 80px;
+  }
+  
+  .rsvpForm button {
+    background: #8d6e63;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: none;
+  }
+  
+  .rsvpForm button:hover {
+    background: #d2b48c;
+  }
+  

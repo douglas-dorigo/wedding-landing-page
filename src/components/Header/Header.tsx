@@ -10,6 +10,7 @@ export default function Header() {
                     <li><Link to="/">Início</Link></li>
                     <li><Link to="/noivos">O Casal</Link></li>
                     <li><Link to="/padrinhos">Padrinhos</Link></li>
+                    <li><Link to="/presenca">Confirmar presença</Link></li>
                 </ul>
             </nav>
         </header>
