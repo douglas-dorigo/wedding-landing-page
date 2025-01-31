@@ -20,7 +20,7 @@ export default function EmailForm() {
     };
 
     emailjs
-      .send('service_regttel', 'template_5i4zv9e', templateParams, 'holHoqVevUZaCLF2s')
+      .send('service_regttel', 'template_wipqf2a', templateParams, 'holHoqVevUZaCLF2s')
       .then(() => {
         setSubmitted(true);
       })

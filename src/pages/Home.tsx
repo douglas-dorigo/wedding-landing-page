@@ -1,6 +1,5 @@
 import Header from '../components/Header/Header';
 import Countdown from '../components/Countdown/Countdown';
-import GiftList from '../components/GiftList/GiftList';
 import Footer from '../components/Footer/Footer';
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
                     <p>Estamos muito felizes em compartilhar esse momento especial com vocês.</p>
                 </section>
                 <Countdown />
-                <GiftList />
             </main>
             <Footer />
         </>
