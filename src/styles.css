@@ -9,19 +9,19 @@ body {
   font-family: "Lora", serif;
   text-align: center;
   background-color: #f5f5dc; /* Bege claro */
-  color: #5d4037; /* Marrom escuro */
+  color: #8d6e63; /* Marrom escuro */
   line-height: 1.6;
 }
 
 h1 {
   font-size: 2.5rem;
-  color: #5d4037; /* Marrom escuro */
+  color: #8d6e63; /* Marrom escuro */
   margin-bottom: 10px;
 }
 
 h2 {
   margin: 20px 0;
-  color: #5d4037; /* Marrom escuro */
+  color: #8d6e63; /* Marrom escuro */
 }
 
 main {

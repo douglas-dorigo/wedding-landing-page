@@ -1,6 +1,6 @@
 .button {
   border: none;
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
   border-radius: 15px;
   font-size: 0.95rem;
@@ -14,7 +14,7 @@
 
 /* Variação Primary */
 .primary {
-  background-color: #5d4037;
+  background-color: #8d6e63;
   color: white;
 }
 
@@ -25,12 +25,12 @@
 /* Variação Secondary */
 .secondary {
   background-color: transparent;
-  color: #5d4037;
-  border: 1px solid #5d4037;
+  color: #8d6e63;
+  border: 1px solid #8d6e63;
 }
 
 .secondary:hover {
-  background-color: #5d4037;
+  background-color: #8d6e63;
   color: white;
 }
 

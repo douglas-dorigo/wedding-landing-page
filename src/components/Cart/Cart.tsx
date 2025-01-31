@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../../store/cartSlice";
+import { CartItem, removeFromCart } from "../../store/cartSlice";
 import styles from "./Cart.module.css";
 import Button from "../Buttons/Button";
 
@@ -8,7 +8,7 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const totalPrice = cartItems.reduce(
-    (total: number, item: any) => total + item.price * item.quantity,
+    (total: number, item: CartItem) => total + item.price * item.quantity,
     0,
   );
 
@@ -19,7 +19,7 @@ export default function Cart() {
       ) : (
         <>
           <ul className={styles.cartList}>
-            {cartItems.map((item: any) => (
+            {cartItems.map((item: CartItem) => (
               <li key={item.id} className={styles.cartItem}>
                 <img
                   src={item.image}

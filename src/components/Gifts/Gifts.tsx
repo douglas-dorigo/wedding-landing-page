@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart, removeFromCart } from "../../store/cartSlice";
+import { addToCart, CartItem, removeFromCart } from "../../store/cartSlice";
 import styles from "./Gifts.module.css";
 import Button from "../Buttons/Button";
 
@@ -47,7 +47,7 @@ export default function Gifts() {
     },
   ];
 
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: CartItem) => {
     dispatch(addToCart(product));
   };
 
@@ -55,7 +55,7 @@ export default function Gifts() {
     dispatch(removeFromCart(productId)); // Remove o item do carrinho
   };
 
-  const handleBuyNow = (product: any) => {
+  const handleBuyNow = (product: CartItem) => {
     dispatch(addToCart(product));
     navigate("/carrinho");
   };
@@ -65,7 +65,7 @@ export default function Gifts() {
       <div className={styles.giftList}>
         {products.map((product) => {
           const isInCart = cartItems.some(
-            (item: any) => item.id === product.id,
+            (item: CartItem) => item.id === product.id,
           );
 
           return (
@@ -85,12 +85,12 @@ export default function Gifts() {
                   <>
                     <Button
                       text="Adicionar ao carrinho"
-                      variant="primary"
+                      variant="secondary"
                       onClick={() => handleAddToCart(product)}
                     />
                     <Button
                       text="Comprar"
-                      variant="primary"
+                      variant="secondary"
                       onClick={() => handleBuyNow(product)}
                     />
                   </>
