@@ -1,11 +1,11 @@
 .footer {
-    background-color: #d2b48c; /* Bege médio */
-    padding: 20px;
-    text-align: center;
-    color: #fff; /* Texto branco */
-    margin-top: 40px;
+  background-color: #d2b48c; /* Bege médio */
+  padding: 20px;
+  text-align: center;
+  color: #fff; /* Texto branco */
+  margin-top: 40px;
 }
-  
+
 .footer p {
-    margin: 0;
+  margin: 0;
 }

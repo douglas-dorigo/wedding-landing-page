@@ -21,7 +21,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
-      const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
+      const itemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id,
+      );
       if (itemIndex >= 0) {
         // Se o item já existe, apenas incrementa a quantidade
         state.items[itemIndex].quantity += 1;
@@ -31,7 +33,7 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter(item => item.id !== action.payload);
+      state.items = state.items.filter((item) => item.id !== action.payload);
     },
     clearCart: (state) => {
       state.items = [];

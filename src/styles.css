@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   text-align: center;
   background-color: #f5f5dc; /* Bege claro */
   color: #5d4037; /* Marrom escuro */
@@ -41,18 +41,18 @@ section {
 /* Estilos para telas menores (celulares) */
 @media (max-width: 1034px) {
   h1 {
-      font-size: 2rem;
+    font-size: 2rem;
   }
 
   h2 {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 
   section {
-      padding: 15px;
+    padding: 15px;
   }
 
   footer {
-      padding: 15px;
+    padding: 15px;
   }
 }

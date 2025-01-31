@@ -1,106 +1,74 @@
 .giftList {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 itens por linha */
-    gap: 20px;
-    padding: 20px;
-    text-align: center;
-    max-width: 1200px; /* Limita a largura máxima */
-    margin: 0 auto; /* Centraliza na tela */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 itens por linha */
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+  max-width: 1200px; /* Limita a largura máxima */
+  margin: 0 auto; /* Centraliza na tela */
 }
 
 .giftItem {
-    background: white;
-    padding: 10px; /* Padding reduzido */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: white;
+  padding: 10px; /* Padding reduzido */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .giftItem:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .giftImage {
-    width: 100%;
-    height: 120px; /* Altura reduzida */
-    object-fit: cover;
-    border-radius: 8px;
+  width: 100%;
+  height: 120px; /* Altura reduzida */
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .buttonContainer {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px; /* Margem reduzida */
-}
-
-.buyNow {
-    background-color: transparent;
-    color: #5d4037;
-    border: 1px solid #5d4037;
-    padding: 6px 12px; /* Padding reduzido */
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.8rem; /* Fonte reduzida */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    flex: 1;
-}
-
-.buyNow:hover {
-    background-color: #5d4037;
-    color: white;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px; /* Margem reduzida */
 }
 
 .giftItem.addedToCart {
-    opacity: 0.6;
-    pointer-events: none;
-  }
-  
-  .giftItem.addedToCart .buyNow {
-    display: none;
-  }
-  
-  .removeButton {
-    background-color: #5d4037;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .removeButton:hover {
-    background-color: #cc0000; /* Cor mais escura ao passar o mouse */
-  }
+  opacity: 0.6;
+  z-index: -1;
+}
 
 /* Responsividade */
 @media (max-width: 1024px) {
-    .giftList {
-        grid-template-columns: repeat(3, 1fr); /* 3 itens por linha em telas menores */
-    }
+  .giftList {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 3 itens por linha em telas menores */
+  }
 }
 
 @media (max-width: 768px) {
-    .giftList {
-        grid-template-columns: repeat(2, 1fr); /* 2 itens por linha em telas ainda menores */
-    }
+  .giftList {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 itens por linha em telas ainda menores */
+  }
 }
 
 @media (max-width: 480px) {
-    .giftList {
-        grid-template-columns: repeat(1, 1fr); /* 1 item por linha em telas muito pequenas */
-    }
+  .giftList {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* 1 item por linha em telas muito pequenas */
+  }
 
-    .giftImage {
-        height: 100px; /* Altura ainda menor para mobile */
-    }
-
-    .buyNow {
-        padding: 5px 10px; /* Padding menor para mobile */
-        font-size: 0.75rem; /* Fonte menor para mobile */
-    }
+  .giftImage {
+    height: 100px; /* Altura ainda menor para mobile */
+  }
 }

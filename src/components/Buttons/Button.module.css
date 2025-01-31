@@ -1,0 +1,52 @@
+.button {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Variação Primary */
+.primary {
+  background-color: #5d4037;
+  color: white;
+}
+
+.primary:hover {
+  background-color: #d2b48c;
+}
+
+/* Variação Secondary */
+.secondary {
+  background-color: transparent;
+  color: #5d4037;
+  border: 1px solid #5d4037;
+}
+
+.secondary:hover {
+  background-color: #5d4037;
+  color: white;
+}
+
+/* Variação Danger */
+.danger {
+  background-color: #ff5252;
+  color: white;
+}
+
+.danger:hover {
+  background-color: #ff0000;
+}
+
+/* Estado Desabilitado */
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

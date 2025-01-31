@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Header.module.css';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Header.module.css";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,14 +15,38 @@ export default function Header() {
         <Link to="/">Douglas & Mari</Link>
       </div>
 
-      <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
+      <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}>
         <ul>
-          <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Início</Link></li>
-          <li><Link to="/noivos" onClick={() => setIsMenuOpen(false)}>Noivos</Link></li>
-          <li><Link to="/padrinhos" onClick={() => setIsMenuOpen(false)}>Padrinhos</Link></li>
-          <li><Link to="/presenca" onClick={() => setIsMenuOpen(false)}>Confirmar presença</Link></li>
-          <li><Link to="/presentes" onClick={() => setIsMenuOpen(false)}>Lista de presentes</Link></li>
-          <li><Link to="/carrinho" onClick={() => setIsMenuOpen(false)}>Carrinho</Link></li>
+          <li>
+            <Link to="/" onClick={() => setIsMenuOpen(false)}>
+              Início
+            </Link>
+          </li>
+          <li>
+            <Link to="/noivos" onClick={() => setIsMenuOpen(false)}>
+              Noivos
+            </Link>
+          </li>
+          <li>
+            <Link to="/padrinhos" onClick={() => setIsMenuOpen(false)}>
+              Padrinhos
+            </Link>
+          </li>
+          <li>
+            <Link to="/presenca" onClick={() => setIsMenuOpen(false)}>
+              Confirmar presença
+            </Link>
+          </li>
+          <li>
+            <Link to="/presentes" onClick={() => setIsMenuOpen(false)}>
+              Lista de presentes
+            </Link>
+          </li>
+          <li>
+            <Link to="/carrinho" onClick={() => setIsMenuOpen(false)}>
+              Carrinho
+            </Link>
+          </li>
         </ul>
       </nav>
 
@@ -33,4 +57,4 @@ export default function Header() {
       </button>
     </header>
   );
-};
+}
