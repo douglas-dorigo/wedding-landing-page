@@ -5,3 +5,7 @@
     color: #fff; /* Texto branco */
     margin-top: 40px;
 }
+  
+.footer p {
+    margin: 0;
+}

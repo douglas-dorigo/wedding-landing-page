@@ -6,7 +6,7 @@ export default function Couple() {
         <>
             <Header />
             <main>
-                <section className="couple">
+                <section>
                     <h2>Nossa História</h2>
                     <p>Aqui você pode contar a história de como se conheceram e momentos especiais do casal.</p>
                 </section>

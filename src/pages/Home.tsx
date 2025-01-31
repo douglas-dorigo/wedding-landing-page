@@ -7,7 +7,7 @@ export default function Home() {
         <>
             <Header />
             <main>
-                <section className="welcome">
+                <section>
                     <h2>Seja bem-vindo ao nosso site de casamento!</h2>
                     <p>Estamos muito felizes em compartilhar esse momento especial com vocês.</p>
                 </section>

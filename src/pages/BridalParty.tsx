@@ -6,7 +6,7 @@ export default function BridalParty() {
         <>
             <Header />
             <main>
-                <section className="bridal-party">
+                <section>
                     <h2>Nossos Padrinhos</h2>
                     <p>Aqui você pode adicionar fotos e descrições dos padrinhos e madrinhas do casamento.</p>
                 </section>

@@ -1,87 +1,103 @@
-/* HEADER GERAL */
+/* Estilos básicos do header */
 .header {
-    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background-color: #d2b48c; /* Bege médio */
+    background-color: #d2b48c;
+    color: white;
+    padding: 10px 20px;
+    position: relative;
   }
   
+  /* Logo */
   .logo a {
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
+    color: white;
     text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
   
-  /* MENU DESKTOP */
-  .nav ul {
+  /* Menu padrão */
+  .nav {
     display: flex;
-    list-style: none;
-    gap: 20px;
   }
   
-  .nav ul li {
-    font-size: 18px;
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
   }
   
   .nav ul li a {
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  
-  .nav ul li a:hover {
-    color: #8d6e63;
-  }
-  
-  /* MENU MOBILE */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .bar {
-    width: 30px;
-    height: 4px;
-    background: #8d6e63;
+    color: white;
+    font-size: 1rem;
     transition: 0.3s;
   }
   
-  /* ESTADO ABERTO DO MENU */
-  .nav.open {
-    display: flex;
+  .nav ul li a:hover {
+    color: #5d4037;
   }
   
-  /* RESPONSIVIDADE */
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-    }
-  
+  /* Esconder menu no mobile */
+  @media (max-width: 1034px) {
     .nav {
       position: absolute;
-      top: 60px;
+      top: 100%;
       right: 0;
-      width: 100%;
-      height: 100vh;
-      background: #d2b48c;
+      padding: 0 20px;
+      background-color: #d2b48c;
       display: none;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+    }
+  
+    .nav.open {
+      display: flex;
     }
   
     .nav ul {
       flex-direction: column;
-      align-items: center;
-      gap: 20px;
+      text-align: center;
+      width: 100%;
+      gap: 0;
+    }
+  
+    .nav ul li {
+      width: 100%;
+      padding: 10px 0;
+    }
+  
+    .nav ul li a {
+      font-size: 1.2rem;
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+    }
+  }
+  
+  /* Botão do menu */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .hamburger .bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+  }
+  
+  @media (max-width: 1034px) {
+    .hamburger {
+      display: flex;
     }
   }
   
