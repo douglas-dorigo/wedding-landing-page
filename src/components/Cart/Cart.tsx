@@ -8,7 +8,7 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const totalPrice = cartItems.reduce(
-    (total: number, item: CartItem) => total + item.price * item.quantity,
+    (total: number, item: CartItem) => total + item.price,
     0,
   );
 

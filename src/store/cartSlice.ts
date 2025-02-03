@@ -5,8 +5,9 @@ export interface CartItem {
     name: string;
     price: number;
     image: string;
-    quantity: number;
+    purchased: boolean;
   }
+  
   
   interface CartState {
     items: CartItem[];
@@ -21,18 +22,25 @@ export interface CartItem {
     initialState,
     reducers: {
       addToCart: (state, action: PayloadAction<CartItem>) => {
-        const itemInCart = state.items.find((item) => item.id === action.payload.id);
-        if (itemInCart) {
-          itemInCart.quantity++;
-        } else {
-          state.items.push({ ...action.payload, quantity: 1 });
+        const product = action.payload;
+        if (!state.items.some((item) => item.id === product.id)) {
+          state.items.push({ ...product, purchased: false });
         }
       },
-      removeFromCart: (state, action: PayloadAction<string>) => {
+      removeFromCart: (state, action : PayloadAction<string>) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
+      },
+      markAsPurchased: (state, action: PayloadAction<string>) => {
+        const id = action.payload;
+        state.items = state.items.map((item) =>
+          item.id === id ? { ...item, purchased: true } : item
+        );
+      },
+      clearCart: (state) => {
+        state.items = [];
       },
     },
   });
   
-  export const { addToCart, removeFromCart } = cartSlice.actions;
+  export const { addToCart, removeFromCart, markAsPurchased, clearCart } = cartSlice.actions;
   export default cartSlice.reducer;

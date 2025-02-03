@@ -2,17 +2,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./CartIcon.module.css";
-import { CartItem } from "../../store/cartSlice";
 
 export default function CartIcon() {
   const navigate = useNavigate();
   const cartItems = useSelector((state: any) => state.cart.items);
 
   // Calcula a quantidade total de itens no carrinho
-  const cartItemCount = cartItems.reduce(
-    (total: number, item: CartItem) => total + item.quantity,
-    0,
-  );
+  const cartItemCount = cartItems.length;
 
   const handleClick = () => {
     navigate("/carrinho");

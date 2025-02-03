@@ -11,8 +11,8 @@ export default function CartList() {
     <>
       <Header />
       <main>
+        <h2>Seu Carrinho</h2>
         <section>
-          <h2>Seu Carrinho</h2>
           <Cart />
           <div style={{
             paddingTop: '20px',

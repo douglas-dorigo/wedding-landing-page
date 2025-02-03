@@ -1,13 +1,3 @@
-.giftList {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 itens por linha */
-  gap: 20px;
-  padding: 20px;
-  text-align: center;
-  max-width: 1200px; /* Limita a largura máxima */
-  margin: 0 auto; /* Centraliza na tela */
-}
-
 .giftItem {
   background: white;
   padding: 10px; /* Padding reduzido */
@@ -25,7 +15,7 @@
 
 .giftImage {
   width: 100%;
-  height: 120px; /* Altura reduzida */
+  height: 250px; /* Altura reduzida */
   object-fit: cover;
   border-radius: 8px;
 }

@@ -4,7 +4,7 @@ import styles from "./EmailForm.module.css";
 
 export default function EmailForm() {
   const [name, setName] = useState("");
-  const [attendance, setAttendance] = useState("yes");
+  const [attendance, setAttendance] = useState("sim");
   const [guests, setGuests] = useState("0");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -57,8 +57,8 @@ export default function EmailForm() {
               <input
                 type="radio"
                 name="attendance"
-                value="yes"
-                checked={attendance === "yes"}
+                value="sim"
+                checked={attendance === "sim"}
                 onChange={(e) => setAttendance(e.target.value)}
               />{" "}
               Sim
@@ -67,20 +67,21 @@ export default function EmailForm() {
               <input
                 type="radio"
                 name="attendance"
-                value="no"
-                checked={attendance === "no"}
+                value="nao"
+                checked={attendance === "nao"}
                 onChange={(e) => setAttendance(e.target.value)}
               />{" "}
               Não
             </label>
           </div>
 
-          {attendance === "yes" && (
+          {attendance === "sim" && (
             <>
               <label>Quantidade de Acompanhantes</label>
               <input
                 type="number"
-                min="0"
+                min={0}
+                max={2}
                 placeholder="Número de acompanhantes"
                 value={guests}
                 onChange={(e) => setGuests(e.target.value)}

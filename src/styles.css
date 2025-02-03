@@ -38,6 +38,16 @@ section {
   margin: 0 auto;
 }
 
+.giftList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 itens por linha */
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+  max-width: 1200px; /* Limita a largura máxima */
+  margin: 0 auto; /* Centraliza na tela */
+}
+
 /* Estilos para telas menores (celulares) */
 @media (max-width: 1034px) {
   h1 {
