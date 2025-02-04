@@ -25,8 +25,7 @@
 }
 
 .weatherDay .icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
 .weatherDay .temperature {
@@ -42,7 +41,6 @@
 
 .weatherDay .date {
   font-size: 0.9rem;
-  margin-top: 5px;
 }
 
 /* Estilo para o dia do meio (menos destacado) */
@@ -52,11 +50,22 @@
 }
 
 .weatherDay.highlighted .icon {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
+}
+
+.weatherDay.highlighted div {
+  display: flex;
+  margin-top: 5px;
+  line-height: normal;
 }
 
 .weatherDay.highlighted .temperature {
   font-size: 1.2rem;
+  display: block;
+}
+
+.weatherDay.highlighted .currentlyTemperature {
+  font-size: 2rem;
 }
 
 .weatherDay.highlighted .date {

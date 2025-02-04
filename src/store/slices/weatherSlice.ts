@@ -7,6 +7,7 @@ export type DailyWeatherData = {
   temperatureMax: number;
   icon: string;
   classIcon: string;
+  currentlyTemperature: number;
 };
 
 // Sítio Maravilhoso
@@ -20,9 +21,17 @@ export const fetchWeather = createAsyncThunk<DailyWeatherData[]>(
       `${API_URLS.WEATHER}?lat=${lat}&lng=${lng}`
     );
     if (!response.ok) throw new Error("Erro ao buscar previsão do tempo");
+
     const data = await response.json();
-    // Retornamos apenas a lista de previsões diárias
-    return data?.data?.daily?.data || [];
+    const currentlyTemperature = data?.data?.currently.temperature || 0;
+    const responseData = data?.data?.daily?.data || [];
+
+    // Se houver previsões diárias, adicionamos a temperatura atual ao primeiro item
+    if (responseData.length > 0) {
+      responseData[0] = { ...responseData[0], currentlyTemperature };
+    }
+
+    return responseData;
   }
 );
 

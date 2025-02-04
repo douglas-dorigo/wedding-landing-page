@@ -4,6 +4,18 @@ import { AppDispatch, RootState } from '../../store/store';
 import { fetchWeather } from '../../store/slices/weatherSlice';
 import styles from './Weather.module.css';
 
+const formatDateWithWeekday = (timestamp: number): string => {
+  const date = new Date(timestamp * 1000);
+
+  // Obtém o nome do dia da semana, exibe como "short" (abreviado) e transforma em maiúsculas
+  const weekday = date.toLocaleDateString("pt-BR", { weekday: "short" }).toUpperCase().replace('.', '');
+
+  // Formata a data no formato DD/MM, sem o ano
+  const formattedDate = date.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+
+  return `${formattedDate} (${weekday})`;
+};
+
 export default function Weather() {
   const dispatch = useDispatch<AppDispatch>();
   const { data, loading, error } = useSelector((state: RootState) => state.weather);
@@ -18,31 +30,35 @@ export default function Weather() {
   // Filtrando os 5 dias com base na data do casamento
   const filteredWeatherData = data.slice(0, 5);
 
-  // Índice do dia do meio
-  const middleIndex = Math.floor(filteredWeatherData.length / 2);
-
   return (
     <div className={styles.weatherContainer}>
       {filteredWeatherData.length ? 
         filteredWeatherData?.map((day, index: number) => (
         <div key={index} className={`${styles.weatherDay} ${
-          index === middleIndex ? styles.highlighted : ''
+          index === 0 ? styles.highlighted : ''
         }`}>
           {/* Data do dia */}
-          <div className={styles.date}>{new Date(day.time * 1000).toLocaleDateString("pt-BR")}</div>
+          <div className={styles.date}>{formatDateWithWeekday(day.time)}</div>
           
-          {/* Ícone do clima */}
-          <div className={`${styles.icon} ${styles[day.icon]}`}>
-            <i className={`wi ${day.classIcon}`}></i>
-          </div>
-          
-          {/* Temperaturas mínimas e máximas */}
-          <div className={styles.temperature}>
-            <p>
-              {Math.round(day.temperatureMin)}°C
-              <span>/</span>{
-              Math.round(day.temperatureMax)}°C
-            </p>
+          <div>
+            {/* Ícone do clima */}
+            <div className={`${styles.icon} ${styles[day.icon]}`}>
+              <i className={`wi ${day.classIcon}`}></i>
+            </div>
+
+            {/* Temperaturas mínimas e máximas */}
+            <div className={styles.temperature}>
+              {index === 0 &&
+                <span className={styles.currentlyTemperature}>
+                  {Math.round(day.currentlyTemperature)}°C
+                </span>
+              }
+              <p>
+                {Math.round(day.temperatureMin)}°C
+                <span>/</span>
+                {Math.round(day.temperatureMax)}°C
+              </p>
+            </div>
           </div>
         </div>
       )) : (
