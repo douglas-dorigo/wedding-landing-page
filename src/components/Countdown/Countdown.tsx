@@ -57,7 +57,7 @@ export default function Countdown() {
   }, []);
 
   return (
-    <section className={styles.countdown}>
+    <div className={styles.countdown}>
       <h2>Contagem Regressiva ⏳</h2>
       {timeLeft.isWeddingDay ? (
         <p>O grande dia chegou! 🎉</p>
@@ -81,6 +81,6 @@ export default function Countdown() {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }

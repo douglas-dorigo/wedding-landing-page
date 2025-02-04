@@ -1,0 +1,15 @@
+:root {
+  --primary-bg: #FFF5D1; /* Amarelo claro */
+  --secondary-bg: #FFFAE5; /* Amarelo mais claro */
+  --text-color: #8d6e63; /* Marrom escuro */
+  --hover-color: #D7A86E; /* Bege queimado */
+  --gray: #ccc; /* Cinza */
+  --light-gray: #ddd; /* Cinza claro */
+  --white: #fff;
+  --success: #28a745;
+  --danger: #ff5252;
+  --danger-hover: #ff0000;
+  --sun: #ffc107; /* Laranja */
+  --rain: #2196f3; /* Azul claro */
+  --storm: gold; /* Dourado */
+}

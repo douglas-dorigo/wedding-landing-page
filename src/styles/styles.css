@@ -6,22 +6,22 @@
 }
 
 body {
-  font-family: "Lora", serif;
+  font-family: "Crimson Pro", serif;
   text-align: center;
-  background-color: #f5f5dc; /* Bege claro */
-  color: #8d6e63; /* Marrom escuro */
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
   line-height: 1.6;
 }
 
 h1 {
   font-size: 2.5rem;
-  color: #8d6e63; /* Marrom escuro */
+  color: var(--text-color);
   margin-bottom: 10px;
 }
 
 h2 {
   margin: 20px 0;
-  color: #8d6e63; /* Marrom escuro */
+  color: var(--text-color);
 }
 
 main {
@@ -30,17 +30,14 @@ main {
 
 section {
   margin-bottom: 40px;
-  background-color: #fff; /* Fundo branco para as seções */
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
   max-width: 800px;
   margin: 0 auto;
 }
 
 .giftList {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 itens por linha */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta automaticamente */
   gap: 20px;
   padding: 20px;
   text-align: center;
@@ -48,8 +45,30 @@ section {
   margin: 0 auto; /* Centraliza na tela */
 }
 
+@media (max-width: 768px) {
+  .giftList {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 itens por linha em telas ainda menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .giftList {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* 1 item por linha em telas muito pequenas */
+  }
+
+  .giftImage {
+    height: 100px; /* Altura ainda menor para mobile */
+  }
+}
+
 /* Estilos para telas menores (celulares) */
-@media (max-width: 1034px) {
+@media (max-width: 1024px) {
   h1 {
     font-size: 2rem;
   }

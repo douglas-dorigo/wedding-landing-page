@@ -1,7 +1,6 @@
-import Cart from "../components/Cart/Cart";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
+import { Footer, Header } from "../components";
+import Cart from "../components/Cart/Cart";
 import Button from "../components/Buttons/Button";
 
 export default function CartList() {

@@ -1,6 +1,4 @@
-import EmailForm from "../components/EmailForm/EmailForm";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
+import { EmailForm, Footer, Header } from "../components";
 
 export default function RSVP() {
   return (

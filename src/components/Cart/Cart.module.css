@@ -2,7 +2,7 @@
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #f9f9f9;
+  background-color: var(--white);
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -17,8 +17,7 @@
   display: flex;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid #eee;
-  background-color: white;
+  border-bottom: 1px solid var(--light-gray);
   border-radius: 8px;
   margin-bottom: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -45,29 +44,11 @@
 .itemDetails h3 {
   margin: 0;
   font-size: 1.1rem;
-  color: #333;
 }
 
 .itemDetails p {
   margin: 5px 0;
   font-size: 0.95rem;
-  color: #666;
-}
-
-.removeButton {
-  background-color: #ff5252;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
-  margin-left: 20px; /* Espaçamento entre os detalhes e o botão */
-}
-
-.removeButton:hover {
-  background-color: #ff0000;
 }
 
 .summary {

@@ -33,6 +33,11 @@ export default function Header() {
             </Link>
           </li>
           <li>
+            <Link to="/cerimonia" onClick={() => setIsMenuOpen(false)}>
+              Cerimônia
+            </Link>
+          </li>
+          <li>
             <Link to="/presenca" onClick={() => setIsMenuOpen(false)}>
               Confirmar presença
             </Link>

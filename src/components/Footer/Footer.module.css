@@ -1,9 +1,9 @@
 .footer {
-  background-color: #d2b48c; /* Bege médio */
   padding: 20px;
   text-align: center;
-  color: #fff; /* Texto branco */
   margin-top: 40px;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
 }
 
 .footer p {

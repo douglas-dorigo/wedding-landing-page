@@ -1,7 +1,7 @@
 .cartIcon {
   position: fixed;
-  bottom: 40px;
-  right: 20px;
+  bottom: 80px;
+  right: 40px;
   cursor: pointer;
   z-index: 1000;
   display: flex;
@@ -18,19 +18,20 @@
 .cartIcon:hover {
   background-color: rgba(255, 255, 255, 1);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  bottom: 85px;
 }
 
 .cartIconSvg {
   font-size: 24px;
-  color: #8d6e63;
+  color: var(--text-color);
 }
 
 .cartCount {
   position: absolute;
   top: -5px;
   right: -5px;
-  background-color: green;
-  color: white;
+  background-color: var(--success);
+  color: var(--white);
   padding: 4px 8px;
   border-radius: 50%;
   font-size: 0.8rem;

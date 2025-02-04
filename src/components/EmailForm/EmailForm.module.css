@@ -1,7 +1,7 @@
 .rsvpContainer {
   max-width: 500px;
   margin: 0 auto;
-  background: #fff;
+  background: var(--white);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -10,13 +10,13 @@
 
 .rsvpContainer h2 {
   font-size: 24px;
-  color: #8d6e63;
+  color: var(--text-color);
   margin-bottom: 15px;
 }
 
 .successMessage {
   font-size: 18px;
-  color: #28a745;
+  color: var(--success);
   margin-top: 10px;
 }
 
@@ -28,7 +28,6 @@
 
 .rsvpForm label {
   font-size: 16px;
-  color: #333;
   font-weight: bold;
   text-align: left;
 }
@@ -46,7 +45,7 @@
 .rsvpForm input:focus,
 .rsvpForm textarea:focus {
   outline: none;
-  border-color: #d2b48c;
+  border-color: var(--hover-color);
 }
 
 .radioGroup {
@@ -68,8 +67,8 @@
 }
 
 .rsvpForm button {
-  background: #8d6e63;
-  color: white;
+  background: var(--text-color);
+  color: var(--secondary-bg);
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -77,5 +76,5 @@
 }
 
 .rsvpForm button:hover {
-  background: #d2b48c;
+  background: var(--hover-color);
 }

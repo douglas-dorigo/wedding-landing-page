@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../Buttons/Button";
-import { addToCart, CartItem } from "../../store/cartSlice";
+import { addToCart, CartItem } from "../../store/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
 import styles from "./Gift.module.css";
+import { RootState } from "../../store/store";
 
 interface GiftProps {
   product: CartItem;
@@ -11,7 +12,7 @@ interface GiftProps {
 export default function Gift({ product }: GiftProps) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cartItems = useSelector((state: any) => state.cart.items);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
   const isInCart = cartItems.some((item: CartItem) => item.id === product.id);
 
   const handleAddToCart = (product: CartItem) => {
@@ -23,8 +24,10 @@ export default function Gift({ product }: GiftProps) {
     navigate("/carrinho");
   };
 
+  const disabledItem = isInCart || product.purchased ? styles.addedToCart : "";
+
   return (
-    <div className={`${styles.giftItem} ${isInCart ? styles.addedToCart : ""}`} >
+    <div className={`${styles.giftItem} ${disabledItem}`} >
       <img src={product.image} alt={product.name} className={styles.giftImage} />
       <h3>{product.name}</h3>
       <p>R$ {product.price}</p>

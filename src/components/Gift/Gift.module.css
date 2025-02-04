@@ -1,5 +1,5 @@
 .giftItem {
-  background: white;
+  background: var(--white);
   padding: 10px; /* Padding reduzido */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -14,7 +14,6 @@
 }
 
 .giftImage {
-  width: 100%;
   height: 250px; /* Altura reduzida */
   object-fit: cover;
   border-radius: 8px;
@@ -31,34 +30,13 @@
   z-index: -1;
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-  .giftList {
-    grid-template-columns: repeat(
-      3,
-      1fr
-    ); /* 3 itens por linha em telas menores */
-  }
-}
-
-@media (max-width: 768px) {
-  .giftList {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* 2 itens por linha em telas ainda menores */
-  }
-}
-
+/* Estilos para telas menores (celulares) */
 @media (max-width: 480px) {
-  .giftList {
-    grid-template-columns: repeat(
-      1,
-      1fr
-    ); /* 1 item por linha em telas muito pequenas */
+  .giftItem {
+    margin: 0 10px;
   }
 
   .giftImage {
-    height: 100px; /* Altura ainda menor para mobile */
+    height: 150px; /* Altura ainda menor para mobile */
   }
 }

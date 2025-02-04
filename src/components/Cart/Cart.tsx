@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { CartItem, removeFromCart } from "../../store/cartSlice";
+import { CartItem, removeFromCart } from "../../store/slices/cartSlice";
 import styles from "./Cart.module.css";
 import Button from "../Buttons/Button";
+import { RootState } from "../../store/store";
 
 export default function Cart() {
-  const cartItems = useSelector((state: any) => state.cart.items);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
   const totalPrice = cartItems.reduce(

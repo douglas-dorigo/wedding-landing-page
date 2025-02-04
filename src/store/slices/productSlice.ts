@@ -1,11 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CartItem } from "./cartSlice";
-
-const API_URL =
-  "https://script.google.com/macros/s/AKfycbw3K5qiwsdpyQwaPEwO9ddQmYYIrGoeUbcj4XGHjn2V_3ogo12FlQAkNPiqsqT8b-Q/exec";
+import API_URLS from "../../config/apiUrls";
 
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
-  const response = await fetch(API_URL);
+  const response = await fetch(API_URLS.GOOGLE_SHEETS);
   const data = await response.json();
   return data as CartItem[];
 });
