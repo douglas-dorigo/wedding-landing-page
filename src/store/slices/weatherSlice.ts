@@ -7,6 +7,8 @@ export type DailyWeatherData = {
   temperatureMax: number;
   icon: string;
   classIcon: string;
+  precipProbability: number;
+  windSpeed: number;
   currentlyTemperature: number;
 };
 

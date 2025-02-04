@@ -38,9 +38,12 @@ export default function Weather() {
           index === 0 ? styles.highlighted : ''
         }`}>
           {/* Data do dia */}
-          <div className={styles.date}>{formatDateWithWeekday(day.time)}</div>
+          <div className={styles.date}>{formatDateWithWeekday(day.time)}
+
+
+          </div>
           
-          <div>
+          <div className={styles.content}>
             {/* Ícone do clima */}
             <div className={`${styles.icon} ${styles[day.icon]}`}>
               <i className={`wi ${day.classIcon}`}></i>
@@ -60,6 +63,18 @@ export default function Weather() {
               </p>
             </div>
           </div>
+
+          {/* Informações extras apenas no dia atual */}
+          {index === 0 && (
+            <div className={styles.extraInfo}>
+              <span>
+                <i className="wi wi-umbrella"></i> {day.precipProbability}%
+              </span>
+              <span>
+                <i className="wi wi-strong-wind"></i> {day.windSpeed} km/h
+              </span>
+            </div>
+          )}
         </div>
       )) : (
         <p>Erro ao buscar a previsão do tempo para essa data.</p>
