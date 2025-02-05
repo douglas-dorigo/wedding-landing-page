@@ -1,11 +1,8 @@
 .footer {
   padding: 20px;
   text-align: center;
-  margin-top: 40px;
-  background-color: var(--primary-bg);
+  margin-top: auto;
+  background-color: var(--secondary-bg);
   color: var(--text-color);
-}
-
-.footer p {
-  margin: 0;
+  height: 60px;
 }

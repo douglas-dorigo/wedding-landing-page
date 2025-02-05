@@ -24,11 +24,6 @@
   justify-content: space-between; /* Alinha os itens e o botão de remover */
 }
 
-.cartItem:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
 .itemImage {
   width: 80px;
   height: 80px;

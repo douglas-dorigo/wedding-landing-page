@@ -5,8 +5,9 @@
   align-items: center;
   padding: 10px 20px;
   position: relative;
-  background-color: var(--primary-bg);
+  background-color: var(--secondary-bg);
   color: var(--text-color);
+  height: 80px;
 }
 
 /* Logo */

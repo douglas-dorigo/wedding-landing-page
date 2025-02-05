@@ -6,26 +6,23 @@
 }
 
 body {
-  font-family: "Crimson Pro", serif;
   text-align: center;
-  background-color: var(--secondary-bg);
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--primary-bg);
   color: var(--text-color);
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
 }
 
-h1 {
-  font-size: 2.5rem;
-  color: var(--text-color);
-  margin-bottom: 10px;
-}
-
-h2 {
-  margin: 20px 0;
-  color: var(--text-color);
+h1, h2 {
+  font-family: 'Playfair Display', serif;
 }
 
 main {
+  min-height: calc(100vh - 140px);
   padding: 20px;
+  text-align: center;
 }
 
 section {

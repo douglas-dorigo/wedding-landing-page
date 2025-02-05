@@ -1,15 +1,19 @@
 :root {
-  --primary-bg: #FFF5D1; /* Amarelo claro */
-  --secondary-bg: #FFFAE5; /* Amarelo mais claro */
-  --text-color: #8d6e63; /* Marrom escuro */
-  --hover-color: #D7A86E; /* Bege queimado */
-  --gray: #ccc; /* Cinza */
-  --light-gray: #ddd; /* Cinza claro */
-  --white: #fff;
-  --success: #28a745;
-  --danger: #ff5252;
-  --danger-hover: #ff0000;
-  --sun: #ffc107; /* Laranja */
-  --rain: #2196f3; /* Azul claro */
-  --storm: gold; /* Dourado */
+  --primary-bg: #F7F1EA; /* Bege sofisticado */
+  --secondary-bg: #FAF3E7; /* Bege mais claro e quente */
+  --text-color: #7A5A42; /* Marrom terroso refinado */
+  --hover-color: #D2B48C; /* Bege dourado suave */
+  --gray: #A99584; /* Cinza amarronzado chique */
+  --light-gray: #E8DACC; /* Bege acinzentado claro */
+  --white: #ffffff;
+
+  /* Estados e feedback */
+  --success: #8EAC80; /* Verde oliva refinado */
+  --danger: #B96A4A; /* Terracota escuro mais elegante */
+  --danger-hover: #D08C6A; /* Terracota mais equilibrado */
+
+   /* Cores do clima ajustadas ao moodboard */
+  --sunny: #E3B778; /* Dourado suave para combinar com a paleta */
+  --rainy: #7C86A2; /* Azul acinzentado para um tom mais sofisticado */
+  --stormy: #5B4747; /* Marrom escuro acinzentado para tempestade */
 }

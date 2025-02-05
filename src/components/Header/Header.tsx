@@ -11,9 +11,9 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <h2 className={styles.logo}>
         <Link to="/">Douglas & Mari</Link>
-      </div>
+      </h2>
 
       <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}>
         <ul>

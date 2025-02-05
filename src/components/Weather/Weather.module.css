@@ -59,17 +59,17 @@
 
 /* Cores dos ícones */
 .weatherDay .icon.MostlyClear {
-  color: var(--sun);
+  color: var(--sunny);
 }
 
 .weatherDay .icon.Drizzle,
 .weatherDay .icon.MostlyCloudy,
 .weatherDay .icon.PartlyCloudy {
-  color: var(--rain);
+  color: var(--rainy);
 }
 
 .weatherDay .icon.Thunderstorms {
-  color: var(--storm);
+  color: var(--stormy);
 }
 
 .weatherDay .extraInfo {
@@ -108,6 +108,6 @@
   }
 
   .weatherDay .extraInfo i {
-    color: var(--rain);
+    color: var(--rainy);
   }
 }
