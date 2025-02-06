@@ -38,10 +38,10 @@ Siga os passos abaixo para configurar e executar o projeto localmente.
    ```
 
 4. **Acesse o projeto:**
+
    ```bash
    Abra o navegador e acesse http://localhost:5173.
    ```
-
 
 5. **Para visualizar o projeto rodando, acesse:**
    ```bash

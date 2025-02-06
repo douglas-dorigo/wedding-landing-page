@@ -3,7 +3,16 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "./store/store";
 import { useEffect } from "react";
 import { fetchProducts } from "./store/slices/productSlice";
-import { BridalParty, CartList, Ceremony, Couple, GiftList, Home, RSVP } from "./pages";
+import {
+  BridalParty,
+  CartList,
+  Ceremony,
+  CheckoutHome,
+  Couple,
+  GiftList,
+  Home,
+  RSVP,
+} from "./pages";
 
 export default function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,6 +31,7 @@ export default function App() {
         <Route path="/presenca" element={<RSVP />} />
         <Route path="/presentes" element={<GiftList />} />
         <Route path="/carrinho" element={<CartList />} />
+        <Route path="/checkout" element={<CheckoutHome />} />
       </Routes>
     </Router>
   );

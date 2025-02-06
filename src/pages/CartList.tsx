@@ -13,12 +13,14 @@ export default function CartList() {
         <h2>Seu Carrinho</h2>
         <section>
           <Cart />
-          <div style={{
-            paddingTop: '20px',
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '10px' 
-          }}>
+          <div
+            style={{
+              paddingTop: "20px",
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+            }}
+          >
             <Button
               text="Voltar para Presentes"
               variant="secondary"

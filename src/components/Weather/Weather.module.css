@@ -58,18 +58,17 @@
 }
 
 /* Cores dos ícones */
+.weatherDay .icon.Clear,
 .weatherDay .icon.MostlyClear {
   color: var(--sunny);
 }
 
 .weatherDay .icon.Drizzle,
+.weatherDay .icon.Cloudy,
 .weatherDay .icon.MostlyCloudy,
-.weatherDay .icon.PartlyCloudy {
-  color: var(--rainy);
-}
-
+.weatherDay .icon.PartlyCloudy,
 .weatherDay .icon.Thunderstorms {
-  color: var(--stormy);
+  color: var(--rainy);
 }
 
 .weatherDay .extraInfo {

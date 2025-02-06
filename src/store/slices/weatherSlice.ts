@@ -19,9 +19,7 @@ const lng = -41.085943;
 export const fetchWeather = createAsyncThunk<DailyWeatherData[]>(
   "weather/fetchWeather",
   async () => {
-    const response = await fetch(
-      `${API_URLS.WEATHER}?lat=${lat}&lng=${lng}`
-    );
+    const response = await fetch(`${API_URLS.WEATHER}?lat=${lat}&lng=${lng}`);
     if (!response.ok) throw new Error("Erro ao buscar previsão do tempo");
 
     const data = await response.json();
@@ -34,7 +32,7 @@ export const fetchWeather = createAsyncThunk<DailyWeatherData[]>(
     }
 
     return responseData;
-  }
+  },
 );
 
 const weatherSlice = createSlice({
@@ -56,7 +54,8 @@ const weatherSlice = createSlice({
       })
       .addCase(fetchWeather.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || "Erro ao carregar previsão do tempo";
+        state.error =
+          action.error.message || "Erro ao carregar previsão do tempo";
         state.data = null;
       });
   },

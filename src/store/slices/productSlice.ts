@@ -2,11 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CartItem } from "./cartSlice";
 import API_URLS from "../../config/apiUrls";
 
-export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
-  const response = await fetch(API_URLS.GOOGLE_SHEETS);
-  const data = await response.json();
-  return data as CartItem[];
-});
+export const fetchProducts = createAsyncThunk(
+  "products/fetchProducts",
+  async () => {
+    const response = await fetch(API_URLS.GOOGLE_SHEETS);
+    const data = await response.json();
+    return data as CartItem[];
+  },
+);
 
 interface ProductsState {
   items: CartItem[];

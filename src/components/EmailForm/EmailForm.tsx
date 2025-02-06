@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
 import styles from "./EmailForm.module.css";
+import { sendEmailConfirmation } from "../../utils/emailUtils";
 
 export default function EmailForm() {
   const [name, setName] = useState("");
@@ -12,24 +12,9 @@ export default function EmailForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const templateParams = {
-      name,
-      attendance,
-      guests,
-      message,
-    };
-
-    emailjs
-      .send(
-        "service_regttel",
-        "template_wipqf2a",
-        templateParams,
-        "holHoqVevUZaCLF2s",
-      )
-      .then(() => {
-        setSubmitted(true);
-      })
-      .catch((error) => console.error("Erro:", error));
+    sendEmailConfirmation(name, attendance, guests, message).then(() => {
+      setSubmitted(true);
+    });
   };
 
   return (

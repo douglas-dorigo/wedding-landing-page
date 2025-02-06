@@ -5,7 +5,7 @@ import { store } from "./store/store";
 import App from "./App";
 import "./styles/styles.css";
 import "./styles/colors.css";
-import 'weather-icons/css/weather-icons.css';
+import "weather-icons/css/weather-icons.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

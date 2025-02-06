@@ -1,6 +1,5 @@
 import { Footer, Header } from "../components";
 
-
 export default function BridalParty() {
   return (
     <>

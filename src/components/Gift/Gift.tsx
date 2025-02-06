@@ -27,8 +27,12 @@ export default function Gift({ product }: GiftProps) {
   const disabledItem = isInCart || product.purchased ? styles.addedToCart : "";
 
   return (
-    <div className={`${styles.giftItem} ${disabledItem}`} >
-      <img src={product.image} alt={product.name} className={styles.giftImage} />
+    <div className={`${styles.giftItem} ${disabledItem}`}>
+      <img
+        src={product.image}
+        alt={product.name}
+        className={styles.giftImage}
+      />
       <h3>{product.name}</h3>
       <p>R$ {product.price}</p>
 
@@ -37,13 +41,21 @@ export default function Gift({ product }: GiftProps) {
           <Button variant="primary" text="Comprado" disabled />
         ) : !isInCart ? (
           <>
-            <Button variant="secondary" text="Adicionar ao Carrinho" onClick={() => handleAddToCart(product)} />
-            <Button variant="primary" text="Comprar" onClick={() => handleBuyNow(product)}/>
+            <Button
+              variant="secondary"
+              text="Adicionar ao Carrinho"
+              onClick={() => handleAddToCart(product)}
+            />
+            <Button
+              variant="primary"
+              text="Comprar"
+              onClick={() => handleBuyNow(product)}
+            />
           </>
         ) : (
-          <Button variant="primary"  text="Adicionado" disabled />
+          <Button variant="primary" text="Adicionado" disabled />
         )}
       </div>
     </div>
   );
-};
+}
