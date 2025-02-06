@@ -2,10 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface CartItem {
   id: string;
-  name: string;
-  price: number;
+  title: string;
+  unit_price: number;
   image: string;
   purchased: boolean;
+  quantity: number;
 }
 
 interface CartState {
@@ -23,7 +24,7 @@ const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<CartItem>) => {
       const product = action.payload;
       if (!state.items.some((item) => item.id === product.id)) {
-        state.items.push({ ...product, purchased: false });
+        state.items.push({ ...product, purchased: false, quantity: 1 });
       }
     },
     removeFromCart: (state, action: PayloadAction<string>) => {

@@ -9,7 +9,7 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const totalPrice = cartItems.reduce(
-    (total: number, item: CartItem) => total + item.price,
+    (total: number, item: CartItem) => total + item.unit_price,
     0,
   );
 
@@ -24,12 +24,12 @@ export default function Cart() {
               <li key={item.id} className={styles.cartItem}>
                 <img
                   src={item.image}
-                  alt={item.name}
+                  alt={item.title}
                   className={styles.itemImage}
                 />
                 <div className={styles.itemDetails}>
-                  <h3>{item.name}</h3>
-                  <p>R$ {item.price.toFixed(2)}</p>
+                  <h3>{item.title}</h3>
+                  <p>R$ {item.unit_price.toFixed(2)}</p>
                 </div>
                 <Button
                   text="Remover"

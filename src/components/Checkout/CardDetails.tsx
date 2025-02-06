@@ -6,6 +6,7 @@ import {
   maskCVV,
   validateCardDetails,
 } from "../../utils/cardUtils";
+import styles from "./Checkout.module.css";
 
 interface CardDetailsProps {
   onCardDetailsChange: (
@@ -64,8 +65,8 @@ export const CardDetails = ({ onCardDetailsChange }: CardDetailsProps) => {
   };
 
   return (
-    <div className="cardDetails">
-      <div className="inputContainer">
+    <div className={styles.cardDetails}>
+      <div className={styles.inputContainer}>
         <label htmlFor="cardNumber">Número do Cartão</label>
         <ReactInputMask
           mask="9999 9999 9999 9999"
@@ -74,7 +75,7 @@ export const CardDetails = ({ onCardDetailsChange }: CardDetailsProps) => {
           placeholder="1234 5678 9876 5432"
         />
       </div>
-      <div className="inputContainer">
+      <div className={styles.inputContainer}>
         <label htmlFor="expiration">Validade</label>
         <ReactInputMask
           mask="99/99"
@@ -83,7 +84,7 @@ export const CardDetails = ({ onCardDetailsChange }: CardDetailsProps) => {
           placeholder="MM/AA"
         />
       </div>
-      <div className="inputContainer">
+      <div className={styles.inputContainer}>
         <label htmlFor="cvv">CVV</label>
         <ReactInputMask
           mask="999"
@@ -92,7 +93,7 @@ export const CardDetails = ({ onCardDetailsChange }: CardDetailsProps) => {
           placeholder="123"
         />
       </div>
-      <div className="inputContainer">
+      <div className={styles.inputContainer}>
         <label htmlFor="cardName">Nome</label>
         <input
           type="text"

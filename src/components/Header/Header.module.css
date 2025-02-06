@@ -4,10 +4,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  position: relative;
   background-color: var(--secondary-bg);
   color: var(--text-color);
-  height: 80px;
+  height: 60px;
+  position: sticky; 
+  top: 0; 
+  z-index: 1000;
 }
 
 /* Logo */
@@ -42,68 +44,94 @@
   color: var(--hover-color);
 }
 
-/* Esconder menu no mobile */
+.hamburger {
+  display: none;
+}
+
+/* Menu Mobile - Estilos aprimorados */
 @media (max-width: 1034px) {
-  .nav {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    padding: 0 20px;
-    background-color: var(--primary-bg);
-    display: none;
+  .header {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background-color: var(--secondary-bg);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1001;
   }
 
   .nav.open {
-    display: flex;
+    transform: translateX(0);
   }
 
   .nav ul {
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     width: 100%;
     gap: 0;
+    margin-top: 60px;
+    padding: 20px;
   }
 
   .nav ul li {
     width: 100%;
-    padding: 10px 0;
+    padding: 15px 10px; /* Aumenta o padding */
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s; /* Transição na cor de fundo */
+  }
+
+  .nav ul li:hover {
+    background-color: rgba(var(--secondary-bg-rgb), 0.2); /* Cor de fundo ao passar o mouse */
   }
 
   .nav ul li a {
     font-size: 1.2rem;
     display: block;
     width: 100%;
-    padding: 10px 0;
+    color: var(--text-color); /* Cor do texto */
+    padding: 0; /* Remove o padding dos links */
+    transition: color 0.3s; /* Transição na cor do texto */
   }
-}
 
-/* Botão do menu */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.hamburger .bar {
-  width: 30px;
-  height: 3px;
-  background-color: var(--text-color);
-  transition: 0.3s;
-}
-
-.hamburger:hover {
-  .bar {
-    background-color: var(--hover-color);
+  .nav ul li a:hover {
+    color: var(--hover-color); /* Cor do texto ao passar o mouse */
   }
-}
 
-@media (max-width: 1034px) {
   .hamburger {
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1002;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hamburger .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+
+  .hamburger:hover .bar {
+    background-color: var(--hover-color);
   }
 }

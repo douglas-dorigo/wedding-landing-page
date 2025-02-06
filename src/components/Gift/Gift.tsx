@@ -30,11 +30,11 @@ export default function Gift({ product }: GiftProps) {
     <div className={`${styles.giftItem} ${disabledItem}`}>
       <img
         src={product.image}
-        alt={product.name}
+        alt={product.title}
         className={styles.giftImage}
       />
-      <h3>{product.name}</h3>
-      <p>R$ {product.price}</p>
+      <h3>{product.title}</h3>
+      <p>R$ {product.unit_price}</p>
 
       <div className={styles.buttonContainer}>
         {product.purchased ? (

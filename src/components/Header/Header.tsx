@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
-export default function Header() {
+
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,51 +17,56 @@ export default function Header() {
         <Link to="/">Douglas & Mari</Link>
       </h2>
 
-      <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}>
-        <ul>
-          <li>
-            <Link to="/" onClick={() => setIsMenuOpen(false)}>
-              Início
-            </Link>
-          </li>
-          <li>
-            <Link to="/noivos" onClick={() => setIsMenuOpen(false)}>
-              Noivos
-            </Link>
-          </li>
-          <li>
-            <Link to="/padrinhos" onClick={() => setIsMenuOpen(false)}>
-              Padrinhos
-            </Link>
-          </li>
-          <li>
-            <Link to="/cerimonia" onClick={() => setIsMenuOpen(false)}>
-              Cerimônia
-            </Link>
-          </li>
-          <li>
-            <Link to="/presenca" onClick={() => setIsMenuOpen(false)}>
-              Confirmar presença
-            </Link>
-          </li>
-          <li>
-            <Link to="/presentes" onClick={() => setIsMenuOpen(false)}>
-              Lista de presentes
-            </Link>
-          </li>
-          <li>
-            <Link to="/carrinho" onClick={() => setIsMenuOpen(false)}>
-              Carrinho
-            </Link>
-          </li>
-        </ul>
-      </nav>
-
       <button className={styles.hamburger} onClick={toggleMenu}>
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
         <div className={styles.bar}></div>
       </button>
+
+      <nav
+        className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}
+        ref={navRef}
+      >
+        <ul>
+          <li>
+            <Link to="/" onClick={toggleMenu}>
+              Início
+            </Link>
+          </li>
+          <li>
+            <Link to="/noivos" onClick={toggleMenu}>
+              Noivos
+            </Link>
+          </li>
+          <li>
+            <Link to="/padrinhos" onClick={toggleMenu}>
+              Padrinhos
+            </Link>
+          </li>
+          <li>
+            <Link to="/cerimonia" onClick={toggleMenu}>
+              Cerimônia
+            </Link>
+          </li>
+          <li>
+            <Link to="/presenca" onClick={toggleMenu}>
+              Confirmar presença
+            </Link>
+          </li>
+          <li>
+            <Link to="/presentes" onClick={toggleMenu}>
+              Lista de presentes
+            </Link>
+          </li>
+          <li>
+            <Link to="/carrinho" onClick={toggleMenu}>
+              Carrinho
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
-}
+};
+
+export default Header;

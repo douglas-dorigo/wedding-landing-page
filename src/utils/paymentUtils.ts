@@ -30,8 +30,8 @@ export const processPayment = async (
       },
       body: JSON.stringify({
         items: cartItems.map((item) => ({
-          title: item.name,
-          unit_price: item.price,
+          title: item.title,
+          unit_price: item.unit_price,
           quantity: 1,
           currency_id: "BRL",
         })),
@@ -52,7 +52,7 @@ export const processPayment = async (
         });
         await markProductsAsPurchased(cartItems);
         clearCart();
-        dispatch(paymentSuccess(cartItems.map((item) => item.name)));
+        dispatch(paymentSuccess(cartItems.map((item) => item.title)));
       }, 3000);
     } else {
       dispatch(paymentError("Erro ao processar o pagamento. Tente novamente."));

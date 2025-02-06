@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Checkout.module.css";
 
 interface PaymentMethodsProps {
   paymentMethod: string;
@@ -10,7 +11,7 @@ export const PaymentMethods = ({
   setPaymentMethod,
 }: PaymentMethodsProps) => {
   return (
-    <div className="paymentMethods">
+    <div className={styles.paymentMethods}>
       <label>
         <input
           type="radio"

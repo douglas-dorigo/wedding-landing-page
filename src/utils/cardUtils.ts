@@ -26,8 +26,8 @@ export const validateCardDetails = (cardDetails: {
   cvv: string;
 }) => {
   return (
-    /^\d{16}$/.test(cardDetails.cardNumber) &&
-    /^(0[1-9]|1[0-2])\/\d{2}$/.test(cardDetails.expiration) &&
-    /^\d{3}$/.test(cardDetails.cvv)
+    !/^\d{16}$/.test(cardDetails.cardNumber) &&
+    !/^(0[1-9]|1[0-2])\/\d{2}$/.test(cardDetails.expiration) &&
+    !/^\d{3}$/.test(cardDetails.cvv)
   );
 };

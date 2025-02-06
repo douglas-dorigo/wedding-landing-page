@@ -18,7 +18,7 @@ export const sendEmailPayment = async ({
   const templateParams = {
     name,
     cartItems: cartItems
-      .map((item) => `- ${item.name} (R$ ${item.price.toFixed(2)})`)
+      .map((item) => `- ${item.title} (R$ ${item.unit_price.toFixed(2)})`)
       .join("\n"),
     totalPrice: `R$ ${totalPrice.toFixed(2)}`,
     message: message || "Sem mensagem adicional.",

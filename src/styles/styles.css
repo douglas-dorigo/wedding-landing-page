@@ -1,4 +1,4 @@
-Reset básico * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -14,13 +14,12 @@ body {
   flex-direction: column;
 }
 
-h1,
-h2 {
+h1, h2 {
   font-family: "Playfair Display", serif;
 }
 
 main {
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 120px);
   padding: 20px;
   text-align: center;
 }
