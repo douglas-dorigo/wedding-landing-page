@@ -42,7 +42,7 @@ export const processPayment = async (
   try {
     const totalPrice = cartItems.reduce((total, item) => total + item.unit_price, 0);
 
-    c// Chama a API do Vercel para criar a preference
+    // Chama a API do Vercel para criar a preference
     const response = await fetch('/api/mercadopago', {
       method: "POST",
       headers: {
