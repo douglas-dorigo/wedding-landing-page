@@ -4,7 +4,6 @@ import { CartItem } from "../../store/slices/cartSlice";
 import { IPaymentBrickCustomization } from "@mercadopago/sdk-react/esm/bricks/payment/type";
 import { createPreference, processPayment } from "../../utils/paymentUtils";
 import { useDispatch } from "react-redux";
-import { getDate } from "date-fns/fp";
 
 interface MercadoPagoCheckoutProps {
   items: CartItem[];
