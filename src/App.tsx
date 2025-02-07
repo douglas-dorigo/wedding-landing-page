@@ -15,7 +15,7 @@ import {
 } from "./pages";
 import API_URLS from "./config/apiUrls";
 import { initMercadoPago } from '@mercadopago/sdk-react';
-initMercadoPago(API_URLS.MERCADO_PAGO_PUBLIC_KEY);
+initMercadoPago(API_URLS.MERCADO_PAGO_PUBLIC_KEY, { locale: "pt-BR" });
 
 export default function App() {
   const dispatch = useDispatch<AppDispatch>();

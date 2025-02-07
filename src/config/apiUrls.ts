@@ -4,7 +4,6 @@ const API_URLS = {
   WEATHER: "https://sites.icasei.com.br/api/v1/forecasts",
   MERCADO_PAGO: "https://api.mercadopago.com/checkout/preferences",
   MERCADO_PAGO_PUBLIC_KEY: "TEST-a626dc20-3f91-461f-94d4-4b96f7c50ec7",
-  MERCADO_PAGO_INIT_POINT: "https://www.mercadopago.com.br/checkout/v1/redirect",
 };
 
 export default API_URLS;

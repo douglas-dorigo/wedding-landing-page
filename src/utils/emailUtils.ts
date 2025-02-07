@@ -17,7 +17,7 @@ export const sendEmailPayment = async ({
 }: paymentTemplate) => {
   const templateParams = {
     name,
-    cartItems: items
+    items: items
       .map((item) => `- ${item.title} (R$ ${item.unit_price.toFixed(2)})`)
       .join("\n"),
     totalPrice: `R$ ${totalPrice.toFixed(2)}`,
@@ -28,7 +28,7 @@ export const sendEmailPayment = async ({
     await emailjs
       .send(
         "service_regttel",
-        "template_wipqf2a",
+        "template_iidiv5k",
         templateParams,
         "holHoqVevUZaCLF2s",
       )

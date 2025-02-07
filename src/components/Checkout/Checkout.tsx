@@ -3,12 +3,33 @@ import { CartItem } from "../../store/slices/cartSlice";
 import { RootState } from "../../store/store";
 import styles from "./Checkout.module.css";
 import MercadoPagoCheckout from './MercadoPagoCheckout';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPreference } from "../../utils/paymentUtils";
 
 export default function Checkout() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const [message, setMessage] = useState<string>('')
   const totalPrice = cartItems.reduce((total, item) => total + item.unit_price, 0);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [preferenceId, setPreferenceId] = useState<string | null>(null);
+
+  // Criar a preference apenas quando os itens do carrinho mudarem
+  useEffect(() => {
+    const generatePreference = async () => {
+      try {
+        const id = await createPreference(cartItems);
+        if (id) {
+          setPreferenceId(id);
+        }
+      } catch {
+        setPaymentError("Erro ao criar preferência de pagamento.");
+      }
+    };
+
+    if (cartItems.length > 0 && !preferenceId) {
+      generatePreference();
+    }
+  }, [cartItems, preferenceId]);
 
   return (
     <div className={styles.checkoutContainer}>
@@ -41,7 +62,18 @@ export default function Checkout() {
             placeholder="Deixe uma mensagem para os noivos..."
           />
         </div>
-        <MercadoPagoCheckout items={cartItems} message={message} />
+
+        {paymentError && <p className={styles.error}>{paymentError}</p>}
+
+        {preferenceId ? (
+          <MercadoPagoCheckout
+            preferenceId={preferenceId}
+            items={cartItems}
+            onError={setPaymentError}
+          />
+        ): (
+          <p>Carregnado pagamento...</p>
+        )}
       </div>
     </div>
   );
