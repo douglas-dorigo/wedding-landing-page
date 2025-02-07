@@ -1,55 +1,64 @@
-// src/utils/paymentUtils.ts
-
 import { CartItem, clearCart } from "../store/slices/cartSlice";
 import API_URLS from "../config/apiUrls";
 import { paymentError, paymentSuccess } from "../store/slices/paymentSlice";
 import { Dispatch } from "redux";
 import { sendEmailPayment } from "./emailUtils";
 
-export const MERCADO_PAGO_ACCESS_TOKEN = "SEU_ACCESS_TOKEN_AQUI";
+// const API_BASE_URL = process.env.NODE_ENV === "production"
+//   ? "https://douglasemari.vercel.app"
+//   : "http://localhost:3000";
 
-// Função para processar o pagamento via Mercado Pago
-export const processPayment = async (
-  cartItems: CartItem[],
-  cardDetails: {
-    cardNumber: string;
-    expiration: string;
-    cvv: string;
-    name: string;
-  },
-  dispatch: Dispatch,
-  totalPrice: number,
-  message: string,
-) => {
+// Função para retornar o preferenceId
+export const createPreference = async (items: CartItem[]) => {
   try {
     const response = await fetch(API_URLS.MERCADO_PAGO, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${MERCADO_PAGO_ACCESS_TOKEN}`,
       },
-      body: JSON.stringify({
-        items: cartItems.map((item) => ({
-          title: item.title,
-          unit_price: item.unit_price,
-          quantity: 1,
-          currency_id: "BRL",
-        })),
-        payer: { name: cardDetails.name },
-      }),
+      body: JSON.stringify({ items }),
+    });
+
+    const data = await response.json();
+
+    debugger;
+    if (data.id) {
+      return data.id;
+    } else {
+      console.error("Erro ao criar preferência:", data);
+    }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+  }
+};
+  
+// Função para processar o pagamento via Mercado Pago
+export const processPayment = async (
+  cartItems: CartItem[],
+  dispatch: Dispatch,
+  name: string,
+  message: string
+) => {
+  try {
+    const totalPrice = cartItems.reduce((total, item) => total + item.unit_price, 0);
+
+    c// Chama a API do Vercel para criar a preference
+    const response = await fetch('/api/mercadopago', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cartItems }),
     });
 
     const result = await response.json();
 
-    if (result.init_point) {
-      // Espera 3 segundos antes de enviar o email de confirmação e marcar os produtos como comprados
+    if (result.init_point || result.preferenceId) {
+      const paymentUrl = result.init_point || `${API_URLS.MERCADO_PAGO_INIT_POINT}?preference_id=${result.preferenceId}`;
+      window.location.href = paymentUrl;
+
       setTimeout(async () => {
-        await sendEmailPayment({
-          name: cardDetails.name,
-          cartItems,
-          totalPrice,
-          message,
-        });
+        await sendEmailPayment({ name, cartItems, totalPrice, message });
         await markProductsAsPurchased(cartItems);
         clearCart();
         dispatch(paymentSuccess(cartItems.map((item) => item.title)));

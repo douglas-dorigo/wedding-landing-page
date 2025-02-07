@@ -1,53 +1,42 @@
 import { useState, useEffect } from "react";
-import { Payment } from "@mercadopago/sdk-react";
+import { initMercadoPago, Payment } from "@mercadopago/sdk-react";
 import API_URLS from "../../config/apiUrls";
 import { CartItem } from "../../store/slices/cartSlice";
-import { IPaymentBrickCustomization, IPaymentFormData } from "@mercadopago/sdk-react/esm/bricks/payment/type";
-
+import { IPaymentBrickCustomization } from "@mercadopago/sdk-react/esm/bricks/payment/type";
+import { createPreference, processPayment } from "../../utils/paymentUtils";
+import { useDispatch } from "react-redux";
 
 interface MercadoPagoCheckoutProps {
   items: CartItem[];
 }
 
+// Personalização dos métodos de pagamento, conforme a API do Payment Brick.
+const paymentCustomization: IPaymentBrickCustomization = {
+  paymentMethods: {
+    creditCard: "all",
+    ticket: "all",
+  },
+};
+
 export default function MercadoPagoCheckout({ items }: MercadoPagoCheckoutProps) {
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const amount = items.reduce((total, item) => total + item.unit_price, 0);
-
-  // Personalização dos métodos de pagamento, conforme a API do Payment Brick.
-  const paymentCustomization: IPaymentBrickCustomization = {
-    paymentMethods: {
-      creditCard: "all",
-      ticket: "all",
-    },
-  };
+  const [message, setMessage] = useState<string>("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const createPreference = async () => {
-      try {
-        const response = await fetch(API_URLS.MERCADO_PAGO, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            // ATENÇÃO: NÃO EXPONHA SEU ACCESS TOKEN NO FRONTEND!
-            // Authorization: `Bearer TEST-5590108890954445-020522-31eadb43867573386c49f14ca2f14706-132710480`,
-          },
-          body: JSON.stringify({ items }),
-        });
+    initMercadoPago(API_URLS.MERCADO_PAGO_PUBLIC_KEY);
+  })
 
-        const data = await response.json();
-
-        if (data.id) {
-          setPreferenceId(data.id);
-        } else {
-          console.error("Erro ao criar preferência:", data);
-        }
-      } catch (error) {
-        console.error("Erro na requisição:", error);
-      }
+  useEffect(() => {
+    const handleCreatePreference = async () => {
+      debugger;
+      const id = await createPreference(items);
+      if (id) setPreferenceId(id);
     };
 
     if (items.length > 0) {
-      createPreference();
+      handleCreatePreference();
     }
   }, [items]);
 
@@ -59,33 +48,17 @@ export default function MercadoPagoCheckout({ items }: MercadoPagoCheckoutProps)
     console.error("Erro no pagamento:", error);
   };
 
-  const onSubmit = async (
-    formData: IPaymentFormData,
-  ): Promise<unknown> => {
-    try {
-      const response = await fetch("/api/process_payment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      if (data.preferenceId) {
-        setPreferenceId(data.preferenceId);
-      }
-      return data;
-    } catch (error) {
-      console.error("Erro ao processar pagamento:", error);
-      throw error;
-    }
+  const onSubmit = async () => {
+    processPayment(items, dispatch, '', '');
   };
 
   return (
     <div>
+      <textarea
+        placeholder="Mensagem para os noivos..."
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
       {preferenceId ? (
         <Payment
           initialization={{ preferenceId, amount }}
