@@ -66,20 +66,20 @@
   padding-left: 20px;
 }
 
-.paymentMethods {
+.inputContainer {
   display: flex;
-  gap: 10px;
-  justify-content: space-around;
+  flex-direction: column;
 }
 
-.paymentMethods input {
-  margin-right: 10px;
+.inputContainer label {
+  margin-bottom: 10px;
+  color: var(--text-color);
 }
 
 .messageInput {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  height: 5rem;
   border-radius: 8px;
   border: 1px solid var(--light-gray);
   box-sizing: border-box;
@@ -87,46 +87,14 @@
   color: var(--text-color);
 }
 
+.messageInput::placeholder {
+  color: var(--light-gray);
+}
+
 .error {
   color: var(--danger);
   font-size: 16px;
   margin-bottom: 15px;
-}
-
-/* CardDetails */
-.cardDetails {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-}
-
-.inputContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.inputContainer label {
-  font-size: 16px;
-  margin-bottom: 5px;
-  color: var(--text-color);
-}
-
-.inputContainer input,
-.inputContainer input-mask {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid var(--light-gray);
-  box-sizing: border-box;
-  width: 100%;
-  background-color: var(--white);
-  color: var(--text-color);
-}
-
-.inputContainer input::placeholder,
-.inputContainer input-mask::placeholder,
-.inputContainer textarea::placeholder {
-  color: var(--light-gray);
 }
 
 /* Media Query para Responsividade */
@@ -152,18 +120,7 @@
     padding-left: 0;
   }
 
-  /* CardDetails */
-  .cardDetails {
-    grid-template-columns: 1fr;
-  }
-
   .inputContainer label {
     font-size: 14px;
-  }
-
-  .inputContainer input,
-  .inputContainer input-mask {
-    font-size: 14px;
-    padding: 8px;
   }
 }

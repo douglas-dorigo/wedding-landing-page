@@ -4,14 +4,11 @@ import { paymentError, paymentSuccess } from "../store/slices/paymentSlice";
 import { Dispatch } from "redux";
 import { sendEmailPayment } from "./emailUtils";
 
-// const API_BASE_URL = process.env.NODE_ENV === "production"
-//   ? "https://douglasemari.vercel.app"
-//   : "http://localhost:3000";
 
 // Função para retornar o preferenceId
 export const createPreference = async (items: CartItem[]) => {
   try {
-    const response = await fetch(API_URLS.MERCADO_PAGO, {
+    const response = await fetch("/api/mercadopago", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,10 +19,10 @@ export const createPreference = async (items: CartItem[]) => {
     const data = await response.json();
 
     debugger;
-    if (data.id) {
-      return data.id;
+    if (data.preferenceId) {
+      return data.preferenceId;
     } else {
-      console.error("Erro ao criar preferência:", data);
+      console.error("Erro ao obter preferenceId:", data);
     }
   } catch (error) {
     console.error("Erro na requisição:", error);

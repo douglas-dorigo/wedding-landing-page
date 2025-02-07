@@ -13,6 +13,9 @@ import {
   Home,
   RSVP,
 } from "./pages";
+import API_URLS from "./config/apiUrls";
+import { initMercadoPago } from '@mercadopago/sdk-react';
+initMercadoPago(API_URLS.MERCADO_PAGO_PUBLIC_KEY);
 
 export default function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,6 +23,7 @@ export default function App() {
   useEffect(() => {
     dispatch(fetchProducts()); // Carrega os produtos ao iniciar o site
   }, [dispatch]);
+
 
   return (
     <Router>

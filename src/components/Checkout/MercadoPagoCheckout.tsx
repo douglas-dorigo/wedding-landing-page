@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { initMercadoPago, Payment } from "@mercadopago/sdk-react";
-import API_URLS from "../../config/apiUrls";
+import { Payment } from "@mercadopago/sdk-react";
 import { CartItem } from "../../store/slices/cartSlice";
 import { IPaymentBrickCustomization } from "@mercadopago/sdk-react/esm/bricks/payment/type";
 import { createPreference, processPayment } from "../../utils/paymentUtils";
@@ -14,23 +13,17 @@ interface MercadoPagoCheckoutProps {
 const paymentCustomization: IPaymentBrickCustomization = {
   paymentMethods: {
     creditCard: "all",
-    ticket: "all",
+    bankTransfer: "all",
   },
 };
 
 export default function MercadoPagoCheckout({ items }: MercadoPagoCheckoutProps) {
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const amount = items.reduce((total, item) => total + item.unit_price, 0);
-  const [message, setMessage] = useState<string>("");
   const dispatch = useDispatch();
 
   useEffect(() => {
-    initMercadoPago(API_URLS.MERCADO_PAGO_PUBLIC_KEY);
-  })
-
-  useEffect(() => {
     const handleCreatePreference = async () => {
-      debugger;
       const id = await createPreference(items);
       if (id) setPreferenceId(id);
     };
@@ -53,12 +46,7 @@ export default function MercadoPagoCheckout({ items }: MercadoPagoCheckoutProps)
   };
 
   return (
-    <div>
-      <textarea
-        placeholder="Mensagem para os noivos..."
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
+    <>
       {preferenceId ? (
         <Payment
           initialization={{ preferenceId, amount }}
@@ -72,6 +60,6 @@ export default function MercadoPagoCheckout({ items }: MercadoPagoCheckoutProps)
       ) : (
         <p>Carregando...</p>
       )}
-    </div>
+    </>
   );
 }
