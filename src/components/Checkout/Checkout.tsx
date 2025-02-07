@@ -41,7 +41,7 @@ export default function Checkout() {
             placeholder="Deixe uma mensagem para os noivos..."
           />
         </div>
-        <MercadoPagoCheckout items={cartItems} />
+        <MercadoPagoCheckout items={cartItems} message={message} />
       </div>
     </div>
   );

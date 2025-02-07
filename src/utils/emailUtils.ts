@@ -3,7 +3,7 @@ import emailjs from "emailjs-com";
 
 interface paymentTemplate {
   name: string;
-  cartItems: CartItem[];
+  items: CartItem[];
   totalPrice: number;
   message: string;
 }
@@ -11,13 +11,13 @@ interface paymentTemplate {
 // Função para enviar o email de confirmação de compra com o EmailJS
 export const sendEmailPayment = async ({
   name,
-  cartItems,
+  items,
   totalPrice,
   message,
 }: paymentTemplate) => {
   const templateParams = {
     name,
-    cartItems: cartItems
+    cartItems: items
       .map((item) => `- ${item.title} (R$ ${item.unit_price.toFixed(2)})`)
       .join("\n"),
     totalPrice: `R$ ${totalPrice.toFixed(2)}`,

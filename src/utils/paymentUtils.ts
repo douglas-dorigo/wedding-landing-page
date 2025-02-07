@@ -18,7 +18,6 @@ export const createPreference = async (items: CartItem[]) => {
 
     const data = await response.json();
 
-    debugger;
     if (data.preferenceId) {
       return data.preferenceId;
     } else {
@@ -31,13 +30,12 @@ export const createPreference = async (items: CartItem[]) => {
   
 // Função para processar o pagamento via Mercado Pago
 export const processPayment = async (
-  cartItems: CartItem[],
+  items: CartItem[],
   dispatch: Dispatch,
-  name: string,
   message: string
 ) => {
   try {
-    const totalPrice = cartItems.reduce((total, item) => total + item.unit_price, 0);
+    const totalPrice = items.reduce((total, item) => total + item.unit_price, 0);
 
     // Chama a API do Vercel para criar a preference
     const response = await fetch('/api/mercadopago', {
@@ -45,7 +43,7 @@ export const processPayment = async (
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ cartItems }),
+      body: JSON.stringify({ items }),
     });
 
     const result = await response.json();
@@ -55,10 +53,10 @@ export const processPayment = async (
       window.location.href = paymentUrl;
 
       setTimeout(async () => {
-        await sendEmailPayment({ name, cartItems, totalPrice, message });
-        await markProductsAsPurchased(cartItems);
+        await sendEmailPayment({ name: result.title, items, totalPrice, message });
+        await markProductsAsPurchased(items);
         clearCart();
-        dispatch(paymentSuccess(cartItems.map((item) => item.title)));
+        dispatch(paymentSuccess(items.map((item) => item.title)));
       }, 3000);
     } else {
       dispatch(paymentError("Erro ao processar o pagamento. Tente novamente."));
