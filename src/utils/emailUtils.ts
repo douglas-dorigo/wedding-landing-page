@@ -5,7 +5,7 @@ interface paymentTemplate {
   name: string;
   items: CartItem[];
   totalPrice: number;
-  message: string;
+  message?: string;
 }
 
 // Função para enviar o email de confirmação de compra com o EmailJS
@@ -17,11 +17,11 @@ export const sendEmailPayment = async ({
 }: paymentTemplate) => {
   const templateParams = {
     name,
+    message,
     items: items
       .map((item) => `- ${item.title} (R$ ${item.unit_price.toFixed(2)})`)
       .join("\n"),
     totalPrice: `R$ ${totalPrice.toFixed(2)}`,
-    message: message || "Sem mensagem adicional.",
   };
 
   try {

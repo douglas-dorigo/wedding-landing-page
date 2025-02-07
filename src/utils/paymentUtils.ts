@@ -2,8 +2,7 @@ import { CartItem, clearCart } from "../store/slices/cartSlice";
 import API_URLS from "../config/apiUrls";
 import { paymentError, paymentSuccess } from "../store/slices/paymentSlice";
 import { Dispatch } from "redux";
-// import { sendEmailPayment } from "./emailUtils";
-
+import { sendEmailPayment } from "./emailUtils";
 
 // Função para retornar o preferenceId
 export const createPreference = async (items: CartItem[]) => {
@@ -23,7 +22,9 @@ export const createPreference = async (items: CartItem[]) => {
     const data = await response.json();
 
     if (!data.preferenceId) {
-      throw new Error(`Erro na resposta do Mercado Pago: ${JSON.stringify(data)}`);
+      throw new Error(
+        `Erro na resposta do Mercado Pago: ${JSON.stringify(data)}`,
+      );
     }
 
     return data.preferenceId;
@@ -32,20 +33,23 @@ export const createPreference = async (items: CartItem[]) => {
     throw error;
   }
 };
-  
+
 // Função para processar o pagamento via Mercado Pago
 export const processPayment = async (
   items: CartItem[],
+  amount: number,
+  name: string,
+  message: string,
   dispatch: Dispatch,
 ) => {
   try {
     // Chama a API do Vercel para criar a preference
-    const response = await fetch('/api/mercadopago', {
+    const response = await fetch("/api/mercadopago", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ items }),
+      body: JSON.stringify({ items, amount }),
     });
 
     if (!response.ok) {
@@ -58,13 +62,15 @@ export const processPayment = async (
       // Espera 5 segundos antes de enviar o email e marcar produtos como comprados
       setTimeout(async () => {
         try {
-          // await sendEmailPayment({ name: result.title, items, totalPrice, message });
+          await sendEmailPayment({ name, items, totalPrice: amount, message });
           await markProductsAsPurchased(items);
           dispatch(clearCart());
           dispatch(paymentSuccess(items.map((item) => item.title)));
         } catch (error) {
           console.error("❌ Erro pós-pagamento:", error);
-          dispatch(paymentError("Erro ao concluir a compra. Entre em contato."));
+          dispatch(
+            paymentError("Erro ao concluir a compra. Entre em contato."),
+          );
         }
       }, 5000);
     } else {
@@ -87,8 +93,9 @@ export const markProductsAsPurchased = async (cartItems: CartItem[]) => {
         },
         body: JSON.stringify({ productId: item.id }),
       });
-
+      console.log("markProductsAsPurchased");
       const result = await response.json();
+      console.log("markProductsAsPurchased Result", result);
       if (!response.ok) {
         console.error("Erro ao marcar produto como comprado:", result.error);
       }

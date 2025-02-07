@@ -1,8 +1,9 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
-const accessToken = process.env.VERCEL_ENV === "production"
-  ? process.env.MERCADO_PAGO_ACCESS_TOKEN_PROD
-  : process.env.MERCADO_PAGO_ACCESS_TOKEN_TEST;
+const accessToken =
+  process.env.VERCEL_ENV === "production"
+    ? process.env.MERCADO_PAGO_ACCESS_TOKEN_PROD
+    : process.env.MERCADO_PAGO_ACCESS_TOKEN_TEST;
 
 // const baseUrl = process.env.VERCEL_ENV === "production"
 //   ? process.env.FRONTEND_URL_PROD
@@ -16,28 +17,32 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   console.log("🔍 Ambiente atual:", process.env.VERCEL_ENV);
 
   try {
-    const { items } = req.body;
+    const { items, amount } = req.body;
 
     // Configuração de back_urls
     const preference = {
       items,
+      amount,
       back_urls: {
         success: `${process.env.FRONTEND_URL_PROD}/checkout`,
         failure: `${process.env.FRONTEND_URL_PROD}/checkout`,
         pending: `${process.env.FRONTEND_URL_PROD}/checkout`,
       },
-      auto_return: 'approved',
+      auto_return: "approved",
     };
 
     // Fazendo a requisição para criar a preferência no Mercado Pago
-    const response = await fetch("https://api.mercadopago.com/checkout/preferences", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${accessToken}`,
+    const response = await fetch(
+      "https://api.mercadopago.com/checkout/preferences",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(preference),
       },
-      body: JSON.stringify(preference),
-    });
+    );
 
     const data = await response.json();
 

@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
-
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
@@ -31,11 +30,6 @@ const Header: React.FC = () => {
           <li>
             <Link to="/" onClick={toggleMenu}>
               Início
-            </Link>
-          </li>
-          <li>
-            <Link to="/noivos" onClick={toggleMenu}>
-              Noivos
             </Link>
           </li>
           <li>

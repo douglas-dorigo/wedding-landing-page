@@ -10,6 +10,7 @@ export default function Ceremony() {
             <h2>Local da Cerimônia</h2>
             <p>Alto São Vicente - Cachoeiro de Itapemirim</p>
             <b>Sítio Maravilhoso</b>
+            <p>02 de Agosto de 2025 às 14:00</p>
             <div style={{ marginTop: "40px" }}>
               <iframe
                 title="Local da Cerimônia"

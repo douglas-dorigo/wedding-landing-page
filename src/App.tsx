@@ -8,13 +8,12 @@ import {
   CartList,
   Ceremony,
   CheckoutHome,
-  Couple,
   GiftList,
   Home,
   RSVP,
 } from "./pages";
 import API_URLS from "./config/apiUrls";
-import { initMercadoPago } from '@mercadopago/sdk-react';
+import { initMercadoPago } from "@mercadopago/sdk-react";
 initMercadoPago(API_URLS.MERCADO_PAGO_PUBLIC_KEY, { locale: "pt-BR" });
 
 export default function App() {
@@ -24,12 +23,10 @@ export default function App() {
     dispatch(fetchProducts()); // Carrega os produtos ao iniciar o site
   }, [dispatch]);
 
-
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/noivos" element={<Couple />} />
         <Route path="/padrinhos" element={<BridalParty />} />
         <Route path="/cerimonia" element={<Ceremony />} />
         <Route path="/presenca" element={<RSVP />} />

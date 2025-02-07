@@ -7,8 +7,8 @@
   background-color: var(--secondary-bg);
   color: var(--text-color);
   height: 60px;
-  position: sticky; 
-  top: 0; 
+  position: sticky;
+  top: 0;
   z-index: 1000;
 }
 
@@ -95,7 +95,10 @@
   }
 
   .nav ul li:hover {
-    background-color: rgba(var(--secondary-bg-rgb), 0.2); /* Cor de fundo ao passar o mouse */
+    background-color: rgba(
+      var(--secondary-bg-rgb),
+      0.2
+    ); /* Cor de fundo ao passar o mouse */
   }
 
   .nav ul li a {

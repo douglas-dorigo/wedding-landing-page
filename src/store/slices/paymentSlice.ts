@@ -38,7 +38,12 @@ const paymentSlice = createSlice({
   },
 });
 
-export const { startPayment, paymentSuccess, paymentCustomer, paymentError, resetPayment } =
-  paymentSlice.actions;
+export const {
+  startPayment,
+  paymentSuccess,
+  paymentCustomer,
+  paymentError,
+  resetPayment,
+} = paymentSlice.actions;
 
 export default paymentSlice.reducer;
