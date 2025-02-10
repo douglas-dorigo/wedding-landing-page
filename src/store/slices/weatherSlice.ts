@@ -50,7 +50,7 @@ const weatherSlice = createSlice({
       })
       .addCase(fetchWeather.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload; // Agora é um array de DailyWeatherData
+        state.data = action.payload;
       })
       .addCase(fetchWeather.rejected, (state, action) => {
         state.loading = false;

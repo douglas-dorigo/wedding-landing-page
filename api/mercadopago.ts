@@ -5,10 +5,6 @@ const accessToken =
     ? process.env.MERCADO_PAGO_ACCESS_TOKEN_PROD
     : process.env.MERCADO_PAGO_ACCESS_TOKEN_TEST;
 
-// const baseUrl = process.env.VERCEL_ENV === "production"
-//   ? process.env.FRONTEND_URL_PROD
-//   : process.env.FRONTEND_URL_TEST;
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Método não permitido" });
