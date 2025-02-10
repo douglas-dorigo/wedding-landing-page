@@ -4,6 +4,11 @@ Bem-vindo ao site de casamento de Mari e Douglas! Este projeto é uma landing pa
 
 ---
 
+
+### Note: Esse projeto não está completo ainda, o desenvolvimento foi parado por motivos de necessidade. Faltam conteúdo e o pagamento ainda não está funcionando corretamente.
+
+### Note: This project is not complete yet, development has been stopped for reasons of necessity. Content is missing and payment is still not working properly.
+
 ## 🚀 Como Executar o Projeto
 
 Siga os passos abaixo para configurar e executar o projeto localmente.
